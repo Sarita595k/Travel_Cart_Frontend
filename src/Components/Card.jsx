@@ -16,8 +16,8 @@ const Card = () => {
             {cardDetails.map((item, index) => (
                 <div
                     key={index}
-                    className="relative flex flex-col w-full max-w-[260px] min-h-[300px] bg-white p-8 
-                               rounded-tl-[5rem] rounded-bl-[5rem] rounded-tr-[2rem] rounded-br-[2rem] 
+                    className="relative flex flex-col w-full max-w-65 min-h-75 bg-white p-8 
+                               rounded-tl-[5rem] rounded-bl-[5rem] rounded-tr-4xl rounded-br-4xl 
                                shadow-[0_15px_40px_rgba(0,0,0,0.06)] transition-all hover:-translate-y-2"
                 >
                     <div className="flex flex-row justify-between mb-6">

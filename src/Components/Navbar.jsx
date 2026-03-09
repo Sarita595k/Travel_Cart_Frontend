@@ -7,7 +7,7 @@ const Navbar = () => {
 
     return (
         /* pointer-events-auto is CRITICAL here so you can click the links */
-        <nav className="w-full h-20 flex items-center justify-between px-6 lg:px-12 text-white relative z-[999] pointer-events-auto">
+        <nav className="w-full h-20 flex items-center justify-between px-6 lg:px-12 text-white relative z-999 pointer-events-auto">
 
             {/* 1. LOGO */}
             <Link to="/" className="text-3xl font-kaushan cursor-pointer tracking-wider">
@@ -49,7 +49,7 @@ const Navbar = () => {
 
             {/* 5. MOBILE OVERLAY MENU */}
             {isOpen && (
-                <div className="fixed inset-0 bg-black/95 backdrop-blur-md flex flex-col items-center justify-center gap-8 lg:hidden z-[998] animate-fade-in">
+                <div className="fixed inset-0 bg-black/95 backdrop-blur-md flex flex-col items-center justify-center gap-8 lg:hidden z-998 animate-fade-in">
                     <ul className="flex flex-col items-center gap-8 font-lora text-xl uppercase tracking-widest">
                         <li onClick={() => setIsOpen(false)}><Link to="/">Home</Link></li>
                         <li onClick={() => setIsOpen(false)}><Link to="/testimonials">Testimonials</Link></li>
