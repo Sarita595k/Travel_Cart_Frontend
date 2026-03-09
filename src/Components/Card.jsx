@@ -11,38 +11,35 @@ const cardDetails = [
 
 const Card = () => {
     return (
-
-        <div className="flex flex-wrap justify-center gap-x-20 gap-y-16 p-10 bg-gray-50 w-full">
+        <div className="flex flex-col lg:flex-row lg:flex-nowrap justify-center items-center gap-x-12 gap-y-16 p-4 w-full overflow-x-hidden">
             {cardDetails.map((item, index) => (
                 <div
                     key={index}
-                    className="relative flex flex-col w-full max-w-65 min-h-75 bg-white p-8 
-                               rounded-tl-[5rem] rounded-bl-[5rem] rounded-tr-4xl rounded-br-4xl 
-                               shadow-[0_15px_40px_rgba(0,0,0,0.06)] transition-all hover:-translate-y-2"
+                    className="relative flex flex-col  w-full max-w-100 min-h-65 bg-[white] p-8
+                               rounded-tl-xl rounded-bl-xl rounded-br-xl rounded-tr-[12rem] border border-[#97e2ea]/30
+                               shadow-[0_28px_36px_rgba(41,137,145,0.2)]"
                 >
-                    <div className="flex flex-row justify-between mb-6">
-                        <div className="flex-none">
-                            <span className="text-5xl font-bold text-gray-100 font-afacad leading-none">
-                                {item.id}
-                            </span>
-                        </div>
+                    <div className="mb-8">
+                        <span className="text-5xl font-bold bg-[#346065] text-white pt-1 pb-1 pl-3 pr-3 rounded-lg font-afacad leading-none transition-colors group-hover:text-orange-50">
+                            {item.id}
+                        </span>
                     </div>
 
-                    <div className="absolute top-1/4 -right-10 -translate-y-1/2 flex items-center justify-center 
-                                    bg-white border-4 border-orange-400 w-20 h-20 rounded-full 
-                                    shadow-lg shadow-orange-100 z-10">
+                    <div className="absolute top-[30%] -right-1 -translate-y-1/2 flex items-center justify-center 
+                                    bg-white border-[6px] border-orange-400 w-24 h-24 rounded-full 
+                                    shadow-xl shadow-orange-100 z-10 transition-transform duration-500 group-hover:scale-110">
                         <img
                             src={item.icon}
                             alt={item.title}
-                            className="w-10 h-10 object-contain"
+                            className="w-12 h-12 object-contain"
                         />
                     </div>
 
-                    <div className="flex-1 flex flex-col mt-4 text-left pr-4">
-                        <h2 className="text-[#066168] font-bold font-afacad text-xl capitalize leading-tight mb-3">
+                    <div className="flex-1 flex flex-col text-left">
+                        <h2 className="text-[#066168] font-bold font-afacad text-2xl capitalize leading-tight mt-6 mb-2">
                             {item.title}
                         </h2>
-                        <p className="text-gray-500 text-sm font-afacad leading-relaxed">
+                        <p className="text-gray-500 text-sm font-afacad leading-relaxed opacity-80 capitalize">
                             {item.details}
                         </p>
                     </div>

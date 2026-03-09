@@ -19,7 +19,8 @@ const HeroSection = () => {
             {/* 2. COLOR OVERLAY */}
             <div className="absolute inset-0 bg-blue-900/50 mix-blend-multiply z-5"></div>
 
-            <div className="absolute top-10 bottom-10 left-10 right-10 bg-black/20 z-10 rounded-2xl border border-white/10 overflow-hidden flex flex-col pointer-events-none">
+            {/* Navbar */}
+            <div className="absolute top-10 bottom-10 left-10 right-10 bg-black/20 z-20 rounded-2xl border border-white/10 overflow-hidden flex flex-col pointer-events-none">
 
                 {/* Navbar */}
                 <div className="pointer-events-auto">
@@ -44,7 +45,7 @@ const HeroSection = () => {
 
             {/* 5. LIZARD IMAGE */}
             <div className="absolute -bottom-10 -left-10 w-80 h-80 z-40 pointer-events-none">
-                <img src={Lizard} alt="Lizard" className="w-full h-full object-contain transform -rotate-12 drop-shadow-2xl" />
+                <img src={Lizard} alt="Lizard" className="w-full h-full object-contain transform -rotate-12 drop-shadow-2xl animate-pulse" />
             </div>
 
             {/* 6. CLOUDS*/}
