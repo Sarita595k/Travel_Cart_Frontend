@@ -1,17 +1,18 @@
 @import "tailwindcss";
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
 
-@keyframes moveClouds {
-  0% {
-    transform: translateX(-100%);
-  }
+@theme {
+  --font-kaushan: "Kaushan Script", cursive;
+  --font-afacad: "Afacad", sans-serif;
 
-  100% {
-    transform: translateX(100vw);
+  --animate-move-clouds: moveClouds 15s linear infinite;
+
+  @keyframes moveClouds {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(100vw);
+    }
   }
 }
-
-/* Custom font if not added via Google Fonts link */
-@import url('https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap');

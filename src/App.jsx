@@ -1,10 +1,15 @@
-import React from 'react'
-import HeroSection from './Components/HeroSection'
+import { Routes, Route } from 'react-router-dom'
+import LandingPage from './Page/LandingPage'
 
 const App = () => {
   return (
     <div className='text-2xl'>
-      <HeroSection />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        {/* <Route path='/register' element={<LandingPage />} />
+        <Route path='/login' element={<LandingPage />} /> */}
+      </Routes>
+      {/* <HeroSection /> */}
     </div>
   )
 }
