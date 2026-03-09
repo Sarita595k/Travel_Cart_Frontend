@@ -10,7 +10,7 @@ const Heading = ({ heading, subHeading }) => {
             </h1>
 
             {/* Sub-Heading */}
-            <h3 className="text-black text-xs md:text-sm font-afacad opacity-80 uppercase tracking-widest">
+            <h3 className="text-black text-xs md:text-sm font-afacad opacity-80 capitalize tracking-widest">
                 {subHeading}
             </h3>
 
