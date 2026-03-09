@@ -5,6 +5,8 @@
   --font-afacad: "Afacad", sans-serif;
 
   --animate-move-clouds: moveClouds 15s linear infinite;
+  --animate-slow-bounce: bounce 15s linear infinite;
+  --animate-slow-bounce2: bounce 5s linear infinite;
 
   @keyframes moveClouds {
     0% {

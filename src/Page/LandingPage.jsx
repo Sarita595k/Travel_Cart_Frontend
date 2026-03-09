@@ -11,6 +11,7 @@ const LandingPage = () => {
             <Heading heading="Easy steps for finding itinerary" subHeading="find itinerary for any destination in the world" />
             <Card />
             <PopularDestination />
+            <Heading heading="Easy steps for finding itinerary" subHeading="find itinerary for any destination in the world" />
         </div>
     )
 }
