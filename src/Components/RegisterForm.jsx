@@ -37,7 +37,7 @@ const RegisterForm = () => {
         } catch (error) {
             // --- RATE LIMITER CHECK ---
             if (error.response?.status === 429) {
-                // This catches the 'Too many requests' error from your backend
+                // This catches the 'Too many requests' error from backend
                 setError(error.response.data.message || "Too many login attempts. Please wait 15 minutes.");
             } else {
                 // This catches normal errors like 'Invalid Credentials'
