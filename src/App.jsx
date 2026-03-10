@@ -4,6 +4,8 @@ import Footer from './Components/Footer'
 import MovingCar from './Components/MovingCar'
 import Register from './Page/Register'
 import Login from './Page/Login'
+import ProtectedRoute from './Components/ProtectedRoute'
+import Dashboard from './Page/Dashboard'
 
 const App = () => {
   return (
@@ -12,8 +14,12 @@ const App = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        } />
       </Routes>
-      {/* <HeroSection /> */}
       <MovingCar />
       <Footer />
     </div>
