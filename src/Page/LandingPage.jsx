@@ -3,6 +3,7 @@ import HeroSection from '../Components/HeroSection'
 import Heading from '../Components/Heading'
 import Card from '../Components/Card'
 import PopularDestination from "../Components/PopularDestination"
+import BestService from '../Components/BestService'
 
 const LandingPage = () => {
     return (
@@ -11,7 +12,7 @@ const LandingPage = () => {
             <Heading heading="Easy steps for finding itinerary" subHeading="find itinerary for any destination in the world" />
             <Card />
             <PopularDestination />
-            <Heading heading="Easy steps for finding itinerary" subHeading="find itinerary for any destination in the world" />
+            <BestService />
         </div>
     )
 }
