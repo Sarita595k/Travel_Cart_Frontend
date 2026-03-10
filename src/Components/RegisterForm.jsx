@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
-import LeftMan from "../assets/movingItems/LeftManImage.png"
 import { useNavigate } from 'react-router-dom';
-import BottomTravelImage from './BottomTravelImage';
-import RotatingCircle from './RotatingCircle';
+import LeftSideMan from '../Page/LeftSideMan';
 
 const RegisterForm = () => {
     const [formData, setFormData] = useState({
@@ -12,69 +10,65 @@ const RegisterForm = () => {
         password: ''
     });
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(""); // State to store backend errors
     const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+        if (error) setError(""); // Clear error when user starts typing
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
+        setError(""); // Reset error state
+
         try {
             const res = await axios.post('http://localhost:2100/api/user/register', formData);
+
             if (res.data.success) {
-                alert("Account created successfully!");
-                navigate('/login');
+                //  Save data to localStorage
+                localStorage.setItem("token", res.data.token);
+                localStorage.setItem("user", JSON.stringify(res.data.user));
+
+                //  Navigate to dashboard
+                navigate('/dashboard');
             }
-        } catch (err) {
-            console.error(err);
-            alert(err.response?.data?.message || "Something went wrong");
+        } catch (error) {
+            // Extract the message sent by backend controller
+            const message = error.response?.data?.message || "Not able to signup. Try again.";
+
+            // Set the error state so it shows up
+            setError(message);
         } finally {
             setLoading(false);
         }
-    };
+    }
 
     return (
         <section className="min-h-screen flex items-stretch overflow-hidden">
 
-            {/* --- LEFT SIDE: THE ILLUSTRATION AREA --- */}
-            <div className="hidden lg:flex w-1/2 relative items-center justify-center overflow-hidden">
-
-                {/* Localized Container for Man + Circle */}
-                <div className="relative w-[400px] h-[400px] flex items-center justify-center">
-                    {/* Rotating Circle */}
-                    <div className="absolute z-0 scale-75 opacity-100 left-10">
-                        <RotatingCircle />
-                    </div>
-
-                    {/* Man Image */}
-                    <img
-                        src={LeftMan}
-                        className="relative z-10 w-64 h-auto object-contain animate-float"
-                        alt="Travel Illustration"
-                    />
-                </div>
-
-                {/* 3. Bottom Decor */}
-                <div className="absolute bottom-0 w-full z-20 scale-105 pointer-events-none">
-                    <BottomTravelImage />
-                </div>
-            </div>
-
-            {/*right side*/}
+            {/* --- left side --- */}
+            <LeftSideMan />
+            {/* --- right side --- */}
             <div className="w-full lg:w-1/2 flex items-center justify-center p-8 md:p-16 z-30">
                 <div className="max-w-md w-full bg-white p-8 md:p-10 rounded-[2.5rem] shadow-xl shadow-[#346065]/10 border-t-8 border-[#066168]">
 
-                    <div className="mb-8 group">
+                    <div className="mb-8">
                         <h2 className="text-4xl font-bold text-[#066168] font-afacad mb-2">
-                            Begin <span className="text-orange-500 italic">Journey</span>
+                            Register your <span className="text-orange-500 italic">Journey</span>
                         </h2>
                         <p className="text-gray-500 font-afacad text-lg">Create your account for <span className="text-[#346065] font-bold underline decoration-orange-500/30">Travel Cart</span>.</p>
                     </div>
 
+                    {/* --- error display --- */}
+                    {error && (
+                        <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 text-sm font-bold animate-shake">
+                            {error}
+                        </div>
+                    )}
+
                     <form onSubmit={handleSubmit} className="space-y-5">
-                        {/* Name Input Group */}
                         <div className="space-y-1 group">
                             <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 group-focus-within:text-[#066168] transition-colors">Full Name</label>
                             <input
@@ -85,10 +79,10 @@ const RegisterForm = () => {
                                 placeholder="Enter your name"
                                 className="w-full px-5 py-3 rounded-2xl bg-gray-50 border-2 border-transparent focus:bg-white focus:border-[#066168] focus:ring-4 focus:ring-[#066168]/10 outline-none transition-all duration-300"
                                 required
+                                autoComplete='off'
                             />
                         </div>
 
-                        {/* Email Input Group */}
                         <div className="space-y-1 group">
                             <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 group-focus-within:text-[#066168] transition-colors">Email Address</label>
                             <input
@@ -99,20 +93,18 @@ const RegisterForm = () => {
                                 placeholder="name@example.com"
                                 className="w-full px-5 py-3 rounded-2xl bg-gray-50 border-2 border-transparent focus:bg-white focus:border-[#066168] focus:ring-4 focus:ring-[#066168]/10 outline-none transition-all duration-300"
                                 required
+                                autoComplete='off'
                             />
                         </div>
 
-                        {/* Password Input Group */}
                         <div className="space-y-1 group">
                             <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 group-focus-within:text-[#066168] transition-colors">Password</label>
-                            <input
-                                type="password"
-                                name="password"
-                                value={formData.password}
+                            <input type="password" name="password" value={formData.password}
                                 onChange={handleChange}
                                 placeholder="••••••••"
                                 className="w-full px-5 py-3 rounded-2xl bg-gray-50 border-2 border-transparent focus:bg-white focus:border-[#066168] focus:ring-4 focus:ring-[#066168]/10 outline-none transition-all duration-300"
                                 required
+                                autoComplete='off'
                             />
                         </div>
 
