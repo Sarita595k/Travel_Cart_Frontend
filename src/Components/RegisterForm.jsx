@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import LeftSideMan from '../Page/LeftSideMan';
+import LeftSideMan from './LeftSideMan';
 
 const RegisterForm = () => {
     const [formData, setFormData] = useState({
@@ -35,11 +35,15 @@ const RegisterForm = () => {
                 navigate('/dashboard');
             }
         } catch (error) {
-            // Extract the message sent by backend controller
-            const message = error.response?.data?.message || "Not able to signup. Try again.";
-
-            // Set the error state so it shows up
-            setError(message);
+            // --- RATE LIMITER CHECK ---
+            if (error.response?.status === 429) {
+                // This catches the 'Too many requests' error from your backend
+                setError(error.response.data.message || "Too many login attempts. Please wait 15 minutes.");
+            } else {
+                // This catches normal errors like 'Invalid Credentials'
+                const message = error.response?.data?.message || "Invalid credentials. Please try again.";
+                setError(message);
+            }
         } finally {
             setLoading(false);
         }

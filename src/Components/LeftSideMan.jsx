@@ -1,6 +1,6 @@
 import LeftMan from "../assets/movingItems/LeftManImage.png"
-import BottomTravelImage from "../Components/BottomTravelImage";
-import RotatingCircle from "../Components/RotatingCircle";
+import BottomTravelImage from "./BottomTravelImage";
+import RotatingCircle from "./RotatingCircle";
 
 const LeftSideMan = () => {
     return (

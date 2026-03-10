@@ -5,7 +5,12 @@ import MovingCar from './Components/MovingCar'
 import Register from './Page/Register'
 import Login from './Page/Login'
 import ProtectedRoute from './Components/ProtectedRoute'
-import Dashboard from './Page/Dashboard'
+// import Dashboard from './Page/Dashboard'
+// import AiForm from './Components/AIForm'
+// import Itinerary from './Page/Itinerary'
+import DashboardPage from './Page/DashboardPage'
+import ItineraryPage from './Page/ItineraryPage'
+import AiFormPage from './Page/AiFormPage'
 
 const App = () => {
   return (
@@ -16,9 +21,22 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path="/dashboard" element={
           <ProtectedRoute>
-            <Dashboard />
+            <DashboardPage />
           </ProtectedRoute>
         } />
+        <Route path="/aiPlanner" element={
+          <ProtectedRoute>
+            <AiFormPage />
+          </ProtectedRoute>
+        } />
+        <Route
+          path="/itinerary"
+          element={
+            <ProtectedRoute>
+              <ItineraryPage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <MovingCar />
       <Footer />

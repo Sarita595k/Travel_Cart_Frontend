@@ -5,6 +5,7 @@ import airplaneImg from "../assets/movingItems/airplane.png";
 import Cloud from "../assets/Header/CloudSubPages.png"
 import Navbar from "./Navbar";
 import GetInTouch from "./GetInTouch";
+import HotAirBallon from "./HotAirBallon";
 
 const HeroSection2 = () => {
     return (
@@ -32,13 +33,7 @@ const HeroSection2 = () => {
             </div>
 
             {/* 5. Hot Air Balloons */}
-            <div className='absolute top-24 left-14 md:top-32 md:left-20 transform animate-slow-bounce z-10'>
-                <img src={balloonLeft} alt="hot air balloon" className="w-20 md:w-48 object-contain" />
-            </div>
-
-            <div className='absolute bottom-16 right-14 md:right-20 transform animate-slow-bounce2 z-10'>
-                <img src={balloonRight} alt="hot air balloon" className="w-20 md:w-32 object-contain" />
-            </div>
+            <HotAirBallon />
             {/* cloud */}
             <div className="absolute top-[40vh] left-0 w-full h-[45vh] z-201 opacity-50 pointer-events-none animate-move-clouds">
                 <img src={Cloud} alt="cloud" className="h-full object-contain" />
