@@ -1,8 +1,8 @@
 import React from 'react'
 import girlBg from "../assets/movingItems/girlsImage.png"
-import circleBg from "../assets/movingItems/CircleShape.png"
-import bottomImg from "../assets/movingItems/travelImages.png"
 import plane from "../assets/movingItems/plane.png"
+import BottomTravelImage from './BottomTravelImage'
+import RotatingCircle from './RotatingCircle'
 
 const BestService = () => {
     return (
@@ -12,16 +12,7 @@ const BestService = () => {
             <div className="relative flex justify-center items-center w-full lg:w-1/2 min-h-[500px]">
 
                 {/* rotating Circle */}
-                <div
-                    className="absolute z-10 animate-[spin_20s_linear_infinite]"
-                    style={{
-                        backgroundImage: `url(${circleBg})`,
-                        backgroundSize: 'contain',
-                        backgroundRepeat: 'no-repeat',
-                        width: '400px',
-                        height: '400px'
-                    }}
-                ></div>
+                <RotatingCircle />
 
                 {/* girls Image */}
                 <img
@@ -31,13 +22,7 @@ const BestService = () => {
                 />
 
                 {/* 3. Bottom Sites Image */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-30 w-full max-w-[400px]">
-                    <img
-                        src={bottomImg}
-                        alt="bottom sites image"
-                        className="w-full object-contain"
-                    />
-                </div>
+                <BottomTravelImage />
             </div>
 
             {/* right side Text Content */}

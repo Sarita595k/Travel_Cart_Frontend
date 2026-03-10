@@ -93,3 +93,19 @@ body {
   /* Prevents image from shrinking when hitting the edge */
   max-width: none !important;
 }
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
