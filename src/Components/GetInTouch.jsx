@@ -1,11 +1,12 @@
-import React from 'react'
-
-const GetInTouch = () => {
+const GetInTouch = ({ value }) => {
     return (
         <>
-            <button className="mt-8 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold transition-all lg:hidden">
-                Get Started
-            </button></>
+            <button className="mt-8 px-8 py-3 bg-[#346065]
+             text-white rounded-full font-bold text-sm md:text-lg
+              hover:bg-orange-500 transition-all shadow-xl">
+                {value}
+            </button>
+        </>
     )
 }
 

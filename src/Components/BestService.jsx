@@ -2,6 +2,7 @@ import React from 'react'
 import girlBg from "../assets/movingItems/girlsImage.png"
 import circleBg from "../assets/movingItems/CircleShape.png"
 import bottomImg from "../assets/movingItems/travelImages.png"
+import plane from "../assets/movingItems/plane.png"
 
 const BestService = () => {
     return (
@@ -41,6 +42,7 @@ const BestService = () => {
 
             {/* right side Text Content */}
             <div className="flex flex-col justify-center text-white lg:w-1/2 p-8 lg:p-16 md:text-center">
+                <div className='absolute right-0 top-0'><img src={plane} alt="plane img" /></div>
                 <h1 className="relative inline-block text-4xl md:text-6xl font-bold mb-8 font-afacad">
                     <span className="absolute -left-10 -top-6 text-orange-500 text-6xl md:text-8xl font-serif italic opacity-80 select-none animate-pulse">“</span>
                     Travel Planning, Reimagined by AI.

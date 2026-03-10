@@ -22,3 +22,74 @@
 body {
   background-color: #DBEEEE;
 }
+
+/* Car Driving Animation */
+@keyframes drive {
+  0% {
+    left: -20%;
+  }
+
+  100% {
+    left: 120%;
+  }
+}
+
+.animate-car {
+  position: absolute;
+  animation: drive 10s linear infinite;
+  z-index: 20;
+  display: block;
+  width: max-content;
+  white-space: nowrap;
+}
+
+/* Animation for Airplane: Right to Left (Fast) */
+@keyframes flyLeft {
+  0% {
+    right: -20%;
+    top: 15%;
+  }
+
+  100% {
+    right: 120%;
+    top: 10%;
+  }
+}
+
+@keyframes flyRight {
+  0% {
+    left: -20%;
+    top: 15%;
+  }
+
+  100% {
+    left: 120%;
+    top: 10%;
+  }
+}
+
+/* Animation for Balloons: Left to Right (Slow & Bobbing) */
+@keyframes floatRight {
+  0% {
+    left: -15%;
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-30px);
+    /* Upward bob at the halfway mark */
+  }
+
+  100% {
+    left: 115%;
+    transform: translateY(0px);
+  }
+}
+
+.animate-airplane {
+  position: absolute;
+  animation: flyRight 18s linear infinite;
+  z-index: 25;
+  /* Prevents image from shrinking when hitting the edge */
+  max-width: none !important;
+}
