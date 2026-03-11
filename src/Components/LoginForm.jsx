@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import LeftSideMan from './LeftSideMan';
 
 const LoginForm = () => {
@@ -88,7 +88,7 @@ const LoginForm = () => {
                         <div className="space-y-1 group">
                             <div className="flex justify-between items-center">
                                 <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 group-focus-within:text-[#066168] transition-colors">Password</label>
-                                <button type="button" className="text-xs font-bold text-orange-500 hover:text-[#066168]">Forgot?</button>
+                                <Link to="/forgot-password" className="text-xs font-bold text-orange-500 hover:text-[#066168]">Forgot?</Link>
                             </div>
                             <input
                                 type="password"
@@ -96,7 +96,8 @@ const LoginForm = () => {
                                 value={formData.password}
                                 onChange={handleChange}
                                 placeholder="••••••••"
-                                className="w-full px-5 py-3 rounded-2xl bg-gray-50 border-2 border-transparent focus:bg-white focus:border-[#066168] focus:ring-4 focus:ring-[#066168]/10 outline-none transition-all duration-300"
+                                className="w-full px-5 py-3 rounded-2xl bg-gray-50 border-2 border-transparent focus:bg-white
+                                 focus:border-[#066168] focus:ring-4 focus:ring-[#066168]/10 outline-none transition-all duration-300"
                                 required
                                 autoComplete='off'
                             />

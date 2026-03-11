@@ -11,14 +11,23 @@ import ProtectedRoute from './Components/ProtectedRoute'
 import DashboardPage from './Page/DashboardPage'
 import ItineraryPage from './Page/ItineraryPage'
 import AiFormPage from './Page/AiFormPage'
+// import ForgotPassword from './Components/ForgotPassword'
+// import ResetPassword from './Components/ResetPassword'
+import ForgotPage from './Page/ForgotPage'
+import ResetPage from './Page/ResetPage'
+import ScrollToTop from './Components/ScrollToTop'
+import NotFound from './Components/NotFound'
 
 const App = () => {
   return (
     <div className='text-2xl'>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPage />} />
+        <Route path="/reset-password/:token" element={<ResetPage />} />
         <Route path="/dashboard" element={
           <ProtectedRoute>
             <DashboardPage />
@@ -37,6 +46,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <MovingCar />
       <Footer />
