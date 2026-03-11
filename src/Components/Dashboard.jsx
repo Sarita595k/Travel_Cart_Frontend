@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import DashboardNavbar from './DashboardNavbar';
@@ -18,8 +18,8 @@ const Dashboard = () => {
         setLoading(true);
         try {
             const token = localStorage.getItem("token");
-            // Appends ?isFavorite=true if the favorites card was clicked
-            const url = `http://localhost:2100/api/itinerary/my-trips${isFavorite ? '?isFavorite=true' : ''}`;
+            // appends ?isFavorite=true if the favorites card was clicked
+            const url = `${import.meta.env.VITE_BASE_URL}/api/itinerary/my-trips${isFavorite ? '?isFavorite=true' : ''}`;
 
             const res = await axios.get(url, {
                 headers: { Authorization: `Bearer ${token}` }
@@ -28,7 +28,7 @@ const Dashboard = () => {
             if (res.data.success) {
                 setTrips(res.data.trips);
 
-                // fetching "all"
+                // updating count 
                 if (!isFavorite) {
                     const favCount = res.data.trips.filter(t => t.isFavorite).length;
                     setStats({ total: res.data.count, favorites: favCount });
@@ -53,32 +53,57 @@ const Dashboard = () => {
         setViewMode("favorites");
         fetchTrips(true);
     };
+    const handleDelete = async (event, tripId) => {
+        event.stopPropagation(); // Prevents navigating to the trip details
 
+        if (!window.confirm("Are you sure you want to delete this journey?")) return;
+
+        try {
+            const token = localStorage.getItem("token");
+            const res = await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/itinerary/${tripId}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+
+            if (res.data.success) {
+                // Remove the trip from the local state
+                setTrips(prev => prev.filter(trip => trip._id !== tripId));
+
+                // Update count
+                setStats(prev => ({
+                    ...prev,
+                    total: prev.total - 1,
+                    // If it was a favorite, decrease favorite count too
+                    favorites: trips.find(t => t._id === tripId)?.isFavorite ? prev.favorites - 1 : prev.favorites
+                }));
+            }
+        } catch (err) {
+            console.error("Delete failed:", err);
+            alert("Could not delete the trip. Please try again.");
+        }
+    };
     const handleLogout = () => {
         localStorage.clear();
         navigate('/login');
     };
 
-    return (<>
-        {/* <DashboardNavbar /> */}
+    return (
         <div className="min-h-screen flex">
             {/* Sidebar */}
             <aside
                 className="w-70 text-white flex flex-col p-6 hidden md:flex min-h-screen"
                 style={{
-                    // 1. Image is first (top), Gradient is second (bottom)
                     backgroundImage: `url(${ManRock}), linear-gradient(to bottom, #066168, #066168)`,
-                    backgroundSize: 'contain', // 'contain' prevents the man from being cut off
-                    backgroundPosition: 'top center', // Moves the man to the bottom of the sidebar
+                    backgroundSize: 'contain',
+                    backgroundPosition: 'top center',
                     backgroundRepeat: 'no-repeat',
-                    backgroundColor: '#346065' // Fallback color
+                    backgroundColor: '#346065'
                 }}
             >
                 <h1 className="text-2xl font-bold font-afacad mb-10">
                     Travel <span className="text-orange-500 italic">Cart</span>
                 </h1>
 
-                <nav className="flex-1 space-y-4 relative z-10"> {/* z-10 ensures text is above image */}
+                <nav className="flex-1 space-y-4 relative z-10">
                     <button
                         onClick={handleViewAll}
                         className={`w-full text-left p-3 rounded-xl transition-all ${viewMode === 'all' ? 'bg-white/20 font-bold' : 'hover:bg-white/10'}`}>🏠 My Itineraries
@@ -92,8 +117,7 @@ const Dashboard = () => {
 
                 <button
                     onClick={handleLogout}
-                    className="mt-auto p-3 bg-orange-500 rounded-xl font-bold hover:bg-orange-600 transition-all relative z-10"
-                >
+                    className="mt-auto p-3 bg-orange-500 rounded-xl font-bold hover:bg-orange-600 transition-all relative z-10">
                     Logout
                 </button>
             </aside>
@@ -109,7 +133,7 @@ const Dashboard = () => {
 
                 {/* Stats Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                    {/* Total History Card */}
+                    {/* total history card */}
                     <div
                         onClick={handleViewAll}
                         className={`p-6 rounded-3xl shadow-sm border cursor-pointer transition-all hover:scale-105 ${viewMode === 'all' ? 'border-[#066168] bg-white ring-2 ring-[#066168]/10' : 'bg-white border-gray-100'}`}
@@ -134,7 +158,7 @@ const Dashboard = () => {
                         <Link to="/aiPlanner" className="text-white font-bold text-xl hover:underline">Create Trip +</Link>
                     </div>
                 </div>
-                {/* Dynamic List Section */}
+                {/*list section */}
                 <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100">
                     <div className="flex justify-between items-center mb-6">
                         <h3 className="text-xl font-bold text-[#346065]">
@@ -161,6 +185,12 @@ const Dashboard = () => {
                                         <p className="text-[10px] text-gray-400 mt-1">{new Date(trip.createdAt).toDateString()}</p>
                                     </div>
                                     <span className="text-2xl">{trip.isFavorite ? '❤️' : '📄'}</span>
+                                    <button
+                                        onClick={(e) => handleDelete(e, trip._id)}
+                                        className="ml-2 p-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-600 hover:text-white transition-all font-bold text-xs"
+                                    >
+                                        DELETE 🗑️
+                                    </button>
                                 </div>
                             ))}
                         </div>
@@ -173,7 +203,6 @@ const Dashboard = () => {
                 </div>
             </main>
         </div>
-    </>
     );
 };
 

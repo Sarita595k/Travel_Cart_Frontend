@@ -3,7 +3,6 @@ import tree from "../assets/movingItems/Righttreepic.png";
 
 const MovingCar = () => {
     return (
-        /* Reduced height for mobile (h-40) and kept it taller for desktop (md:h-[250px]) */
         <section className="relative w-full h-40 md:h-[250px] overflow-hidden flex items-end bg-transparent">
 
             {/* Tree Section */}

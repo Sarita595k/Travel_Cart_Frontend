@@ -1,4 +1,3 @@
-import React from 'react'
 import girlBg from "../assets/movingItems/girlsImage.png"
 import plane from "../assets/movingItems/plane.png"
 import BottomTravelImage from './BottomTravelImage'
@@ -7,7 +6,6 @@ import RotatingCircle from './RotatingCircle'
 const BestService = () => {
     return (
         <div className='flex flex-col lg:flex-row bg-[#066168] min-h-screen relative overflow-hidden px-4 py-10'>
-
             {/* Left side image */}
             <div className="relative flex justify-center items-center w-full lg:w-1/2 min-h-[500px]">
 

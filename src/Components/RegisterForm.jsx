@@ -24,7 +24,7 @@ const RegisterForm = () => {
         setError(""); // Reset error state
 
         try {
-            const res = await axios.post('http://localhost:2100/api/user/register', formData);
+            const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/user/register`, formData);
 
             if (res.data.success) {
                 //  Save data to localStorage
@@ -37,10 +37,8 @@ const RegisterForm = () => {
         } catch (error) {
             // --- RATE LIMITER CHECK ---
             if (error.response?.status === 429) {
-                // This catches the 'Too many requests' error from backend
                 setError(error.response.data.message || "Too many login attempts. Please wait 15 minutes.");
             } else {
-                // This catches normal errors like 'Invalid Credentials'
                 const message = error.response?.data?.message || "Invalid credentials. Please try again.";
                 setError(message);
             }

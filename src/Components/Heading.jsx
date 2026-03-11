@@ -2,7 +2,6 @@ import headingBg from "../assets/sectionBgImages/TitleSeparator.png";
 
 const Heading = ({ heading, colorHeading, subHeading }) => {
     return (
-        /* Added max-w-full and overflow-hidden to prevent any horizontal scroll */
         <div className="flex flex-col items-center justify-center m-4 text-center max-w-full overflow-hidden gap-2 mt-20">
             {/* Main Heading */}
             <h1 className="text-[#066168] font-bold font-afacad text-4xl md:text-5xl capitalize tracking-tight">

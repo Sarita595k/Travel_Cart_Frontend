@@ -7,7 +7,7 @@ const TravelNews = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch('http://localhost:2100/api/news/travel');
+                const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/news/travel`);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const result = await response.json();
                 setNews(result.articles.slice(0, 6));
@@ -39,13 +39,13 @@ const TravelNews = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
-                    {/* --- LEFT COLUMN --- */}
+                    {/* LEFT COLUMN  */}
                     <div className="lg:col-span-4 flex flex-col gap-6 h-full">
                         {news.slice(0, 3).map((article, index) => (
                             <div key={index} className="flex flex-1 items-stretch gap-0 group min-h-[110px]">
                                 <div className="w-24 md:w-28 flex-shrink-0 overflow-hidden rounded-l-2xl">
                                     <img
-                                        src={article.urlToImage || 'https://via.placeholder.com/150'}
+                                        src={article.urlToImage}
                                         className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                                         alt="news"
                                     />
@@ -62,7 +62,7 @@ const TravelNews = () => {
                         ))}
                     </div>
 
-                    {/* --- MIDDLE COLUMN  --- */}
+                    {/* MIDDLE COLUMN  */}
                     <div className="lg:col-span-3 flex flex-col gap-6 h-full">
                         {/* Middle Card */}
                         {news[3] && (

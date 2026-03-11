@@ -14,7 +14,7 @@ const HeroSection2 = () => {
                 <Navbar /></div>
             <div className="absolute top-10 bottom-10 left-10 right-10 bg-black/20 z-20 rounded-2xl border border-white/10 overflow-hidden pointer-events-none"></div>
 
-            {/* 3. Background Image */}
+            {/*  Background Image */}
             <div
                 className="absolute inset-0 z-0"
                 style={{
@@ -27,18 +27,18 @@ const HeroSection2 = () => {
                 <div className="absolute inset-0 bg-black/20"></div>
             </div>
 
-            {/* 4. Moving Airplane */}
+            {/* Moving Airplane */}
             <div className="animate-airplane absolute top-[20%] z-10">
                 <img src={airplaneImg} alt="airplane" className="w-32 md:w-56 object-contain" />
             </div>
 
-            {/* 5. Hot Air Balloons */}
+            {/*  Hot Air Balloons */}
             <HotAirBallon />
             {/* cloud */}
             <div className="absolute top-[40vh] left-0 w-full h-[45vh] z-201 opacity-50 pointer-events-none animate-move-clouds">
                 <img src={Cloud} alt="cloud" className="h-full object-contain" />
             </div>
-            {/* 6. Hero Content */}
+            {/*  Hero Content */}
             <div className="relative z-30 flex flex-col items-center justify-center h-full text-white text-center px-6 pt-20 md:pt-0 pointer-events-none">
                 <div className="pointer-events-auto max-w-full">
                     <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-afacad drop-shadow-lg leading-tight">

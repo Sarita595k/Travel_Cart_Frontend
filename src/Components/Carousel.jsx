@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 
 import img10 from "../assets/Carousel/pic1.jpg";
@@ -112,7 +112,7 @@ const Carousel = () => {
                         <div key={index} className="w-full sm:w-1/2 lg:w-1/4 flex-shrink-0 px-2">
                             <div className="relative h-72 md:h-100 rounded-2xl overflow-hidden shadow-lg border border-gray-100 group cursor-pointer">
 
-                                {/* 1. Main Image */}
+                                {/*  Main Image */}
                                 <img
                                     src={item.url}
                                     alt={item.title}
@@ -122,7 +122,7 @@ const Carousel = () => {
                                     <h3 className="text-white font-afacad text-lg md:text-2xl font-bold">{item.title}</h3>
                                 </div>
 
-                                {/* 3. hover details overlay */}
+                                {/*  hover details overlay */}
                                 <div className="absolute inset-0 bg-[#346065]/90 flex flex-col justify-center items-center text-center p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                     <h3 className="text-white font-bold text-2xl mb-2 border-b border-white/30 pb-2 w-full">
                                         {item.title}

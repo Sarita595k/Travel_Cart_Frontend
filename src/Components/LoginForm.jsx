@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import LeftSideMan from './LeftSideMan';
@@ -24,7 +24,7 @@ const LoginForm = () => {
 
         try {
             // Updated endpoint for login
-            const res = await axios.post('http://localhost:2100/api/user/login', formData);
+            const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/user/login`, formData);
 
             if (res.data.success) {
                 localStorage.setItem("token", res.data.token);
@@ -32,12 +32,10 @@ const LoginForm = () => {
                 navigate('/dashboard');
             }
         } catch (error) {
-            // --- RATE LIMITER CHECK ---
+            // RATE LIMITER CHECK
             if (error.response?.status === 429) {
-                // This catches the 'Too many requests' error from your backend
                 setError(error.response.data.message || "Too many login attempts. Please wait 15 minutes.");
             } else {
-                // This catches normal errors like 'Invalid Credentials'
                 const message = error.response?.data?.message || "Invalid credentials. Please try again.";
                 setError(message);
             }
@@ -82,7 +80,7 @@ const LoginForm = () => {
                                 placeholder="name@example.com"
                                 className="w-full px-5 py-3 rounded-2xl bg-gray-50 border-2 border-transparent focus:bg-white focus:border-[#066168] focus:ring-4 focus:ring-[#066168]/10 outline-none transition-all duration-300"
                                 required
-                                autoComplete='on'
+                                autoComplete='off'
                             />
                         </div>
 
@@ -100,7 +98,7 @@ const LoginForm = () => {
                                 placeholder="••••••••"
                                 className="w-full px-5 py-3 rounded-2xl bg-gray-50 border-2 border-transparent focus:bg-white focus:border-[#066168] focus:ring-4 focus:ring-[#066168]/10 outline-none transition-all duration-300"
                                 required
-                                autoComplete='current-password'
+                                autoComplete='off'
                             />
                         </div>
 

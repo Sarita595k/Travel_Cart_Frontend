@@ -11,12 +11,12 @@ const HeroSection = () => {
     return (
         <section className="relative w-full h-screen overflow-hidden flex flex-row items-center justify-evenly max-md:flex-col">
 
-            {/* 1. BACKGROUND IMAGE */}
+            {/*  BACKGROUND IMAGE */}
             <div className="absolute inset-0 bg-cover bg-center bg-no-repeat brightness-125 z-0"
                 style={{ backgroundImage: `url(${HeaderBg})` }}
             ></div>
 
-            {/* 2. COLOR OVERLAY */}
+            {/*  COLOR OVERLAY */}
             <div className="absolute inset-0 bg-blue-900/50 mix-blend-multiply z-5"></div>
 
             {/* Navbar */}
@@ -38,17 +38,17 @@ const HeroSection = () => {
                 </div>
             </div>
 
-            {/* 4. SOLAR SYSTEM */}
+            {/*  SOLAR SYSTEM */}
             <div className="absolute inset-0 z-15 flex items-center justify-center transform scale-125 lg:scale-150 pointer-events-none">
                 <SolarSystem />
             </div>
 
-            {/* 5. LIZARD IMAGE */}
+            {/*  LIZARD IMAGE */}
             <div className="absolute -bottom-10 -left-10 w-80 h-80 z-40 pointer-events-none">
                 <img src={Lizard} alt="Lizard" className="w-full h-full object-contain transform -rotate-12 drop-shadow-2xl animate-pulse" />
             </div>
 
-            {/* 6. CLOUDS*/}
+            {/*  CLOUDS*/}
             <div className="absolute top-[-4vh] left-0 w-full h-[45vh] z-201 opacity-50 pointer-events-none animate-move-clouds">
                 <img src={Cloud1} alt="cloud" className="h-full object-contain" />
             </div>
@@ -56,7 +56,7 @@ const HeroSection = () => {
                 <img src={Cloud2} alt="cloud" className="h-full object-contain" />
             </div>
 
-            {/* 8. PLANE OVERLAY  */}
+            {/*  PLANE OVERLAY  */}
             <div className="absolute w-full h-[50vh] top-[25%] left-[40%] z-200 opacity-40 bg-no-repeat max-md:hidden pointer-events-none"
                 style={{ backgroundImage: `url(${planeImg})`, backgroundSize: 'contain' }}
             ></div>

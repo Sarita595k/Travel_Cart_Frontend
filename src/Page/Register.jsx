@@ -7,7 +7,8 @@ const Register = () => {
     return (
         <>
             <HeroSection2 />
-            <Heading heading={"Begin Your Adventure"} subHeading={"Create an account to unlock AI-powered itineraries and discover the hidden gems of Incredible India."} />
+            <Heading heading={"Begin Your Adventure"}
+                subHeading={"Create an account to unlock AI-powered itineraries and discover the hidden gems of Incredible India."} />
             <RegisterForm />
         </>
     )
