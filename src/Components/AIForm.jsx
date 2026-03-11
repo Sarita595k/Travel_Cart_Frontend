@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
+
 import Heading from "./Heading"
 import HotAirBallon from "./HotAirBallon"
 import RotatingCircle from "./RotatingCircle"
@@ -9,18 +10,17 @@ import formBg from "../assets/movingItems/form-bg.png"
 import { useEffect } from 'react';
 
 const AiForm = () => {
-    // dummy data 
     const [formData, setFormData] = useState({
         destination: '',
         days: 3,
         budgetType: 'Moderate',
         interests: []
     });
-    const [loading, setLoading] = useState(false);  //adding loading
-    const [error, setError] = useState(""); //  Added error state
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(""); // Added error state
     const navigate = useNavigate();
 
-    const interestOptions = ["Culture", "Adventure", "Food", "Nature", "Nightlife", "History", "Shopping", "Snow"];
+    const interestOptions = ["Culture", "Adventure", "Food", "Nature", "Nightlife", "History", "snow"];
     const location = useLocation();
 
     useEffect(() => {
@@ -39,7 +39,6 @@ const AiForm = () => {
         }));
     };
 
-    // to generate the trip itinerary 
     const handleGenerate = async () => {
         setLoading(true);
         setError(""); // Reset error before new attempt
@@ -47,15 +46,15 @@ const AiForm = () => {
         try {
             const token = localStorage.getItem("token");
             const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/itinerary/generate-trip`, formData, {
-                headers: { Authorization: `Bearer ${token} ` }
+                headers: { Authorization: `Bearer ${token}` }
             });
 
             if (res.data.success) {
-                // navigate only if success is true
+                //  Navigate only if success is true
                 navigate('/itinerary', { state: { data: res.data.itinerary } });
             }
         } catch (err) {
-            // handle Rate Limiter (429)
+            // Handle Rate Limiter (429) 
             if (err.response?.status === 429) {
                 setError(err.response.data.message || "Too many trips! Please wait 15 minutes.");
             } else {
@@ -67,7 +66,6 @@ const AiForm = () => {
     };
 
     return (<>
-        {/* <DashboardNavbar /> */}
         <Heading heading={"AI-Powered Exploration"} subHeading={"From a single destination to a full itinerary in seconds. Get ready to explore the world."} />
         <div className="min-h-screen flex flex-col md:flex-row overflow-hidden">
 
@@ -77,13 +75,15 @@ const AiForm = () => {
                 {/* background decoration */}
                 <div className="absolute inset-0 z-10 pointer-events-none opacity-50">
                     <HotAirBallon />
-                    <div className='ml-40 mt-10'>
-                        <RotatingCircle />
-                    </div>
+                    <div className='ml-40 mt-10'><RotatingCircle /></div>
                 </div>
 
                 {/*  Main Girl Image */}
-                <img src={TravelImg} alt="Travel Illustration" className="absolute inset-0 w-full h-full object-contain z-20" />
+                <img
+                    src={TravelImg}
+                    alt="Travel Illustration"
+                    className="absolute inset-0 w-full h-full object-contain z-20"
+                />
             </div>
 
             {/* --- RIGHT SIDE: FORM --- */}
@@ -118,7 +118,7 @@ const AiForm = () => {
                             <input
                                 type="text"
                                 placeholder="e.g. Kyoto, Japan"
-                                className={`w - full px - 5 py - 3 rounded - xl bg - white border - 2 outline - none font - afacad transition - all ${error ? 'border-red-200 focus:border-red-500' : 'border-gray-100 focus:border-orange-400 shadow-sm'} `}
+                                className={`w-full px-5 py-3 rounded-xl bg-white border-2 outline-none font-afacad transition-all ${error ? 'border-red-200 focus:border-red-500' : 'border-gray-100 focus:border-orange-400 shadow-sm'}`}
                                 onChange={(e) => {
                                     setError("");
                                     setFormData({ ...formData, destination: e.target.value });
@@ -165,10 +165,10 @@ const AiForm = () => {
                                         key={opt}
                                         type="button"
                                         onClick={() => handleInterestToggle(opt)}
-                                        className={`px - 4 py - 1.5 rounded - full border - 2 text - xs transition - all font - bold ${formData.interests.includes(opt)
+                                        className={`px-4 py-1.5 rounded-full border-2 text-xs transition-all font-bold ${formData.interests.includes(opt)
                                             ? 'bg-[#066168] border-[#066168] text-white shadow-md'
                                             : 'border-gray-100 bg-white text-gray-400 hover:border-orange-400 hover:text-orange-500'
-                                            } `}
+                                            }`}
                                     >
                                         {opt}
                                     </button>
