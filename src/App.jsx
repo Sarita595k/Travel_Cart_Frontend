@@ -11,7 +11,7 @@ import AiFormPage from './Page/AiFormPage'
 import ForgotPage from './Page/ForgotPage'
 import ResetPage from './Page/ResetPage'
 import ScrollToTop from './Components/ScrollToTop'
-import NotFound from './Components/NotFound.jsx'
+// import NotFound from './Components/NotFound.jsx'
 
 const App = () => {
   return (
@@ -41,7 +41,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="*" element={<NotFound />} />
+        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
       <MovingCar />
       <Footer />
