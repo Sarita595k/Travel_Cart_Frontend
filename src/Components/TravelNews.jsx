@@ -7,7 +7,7 @@ const TravelNews = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/news/travel`);
+                const response = await fetch(`${import.meta.env.VITE_BASE_URL}api/news/travel`);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const result = await response.json();
                 setNews(result.articles.slice(0, 6));

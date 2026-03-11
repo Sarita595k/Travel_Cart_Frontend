@@ -21,7 +21,7 @@ const Itinerary = () => {
     const handleFavorite = async () => {
         try {
             const token = localStorage.getItem("token");
-            const res = await axios.put(`${import.meta.env.VITE_BASE_URL}/api/itinerary/favorite/${itinerary._id}`, {}, {
+            const res = await axios.put(`${import.meta.env.VITE_BASE_URL}api/itinerary/favorite/${itinerary._id}`, {}, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 
@@ -39,7 +39,7 @@ const Itinerary = () => {
         setRegeneratingDay(dayNum);
         try {
             const token = localStorage.getItem("token");
-            const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/itinerary/updateDay`, {
+            const res = await axios.post(`${import.meta.env.VITE_BASE_URL}api/itinerary/updateDay`, {
                 tripId: itinerary._id,
                 dayToChange: dayNum
             }, { headers: { Authorization: `Bearer ${token}` } });

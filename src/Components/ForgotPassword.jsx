@@ -12,7 +12,7 @@ const ForgotPassword = () => {
         setMessage(''); // Clear previous messages
 
         try {
-            const { data } = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/user/forgot-password`, { email });
+            const { data } = await axios.post(`${import.meta.env.VITE_BASE_URL}api/user/forgot-password`, { email });
             setMessage("Check your inbox! A reset link has been sent.");
         } catch (err) {
             setMessage(err.response?.data?.message || "Something went wrong.");

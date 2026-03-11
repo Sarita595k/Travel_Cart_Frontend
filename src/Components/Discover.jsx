@@ -43,7 +43,7 @@ const Discover = () => {
 
         try {
             const token = localStorage.getItem("token");
-            const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/discover`, query, {
+            const res = await axios.post(`${import.meta.env.VITE_BASE_URL}api/discover`, query, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 

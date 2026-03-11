@@ -14,7 +14,7 @@ const ResetPassword = () => {
         if (password !== confirmPassword) return setError("Passwords do not match");
 
         try {
-            await axios.put(`${import.meta.env.VITE_BASE_URL}/api/user/reset-password/${token}`, { password });
+            await axios.put(`${import.meta.env.VITE_BASE_URL}api/user/reset-password/${token}`, { password });
             alert("Password updated! Redirecting to login...");
             navigate('/login');
         } catch (err) {

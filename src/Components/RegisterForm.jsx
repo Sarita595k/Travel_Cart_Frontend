@@ -24,7 +24,7 @@ const RegisterForm = () => {
         setError(""); // Reset error state
 
         try {
-            const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/user/register`, formData);
+            const res = await axios.post(`${import.meta.env.VITE_BASE_URL}api/user/register`, formData);
 
             if (res.data.success) {
                 //  Save data to localStorage

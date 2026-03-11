@@ -19,7 +19,7 @@ const Dashboard = () => {
         try {
             const token = localStorage.getItem("token");
             // appends ?isFavorite=true if the favorites card was clicked
-            const url = `${import.meta.env.VITE_BASE_URL}/api/itinerary/my-trips${isFavorite ? '?isFavorite=true' : ''}`;
+            const url = `${import.meta.env.VITE_BASE_URL}api/itinerary/my-trips${isFavorite ? '?isFavorite=true' : ''}`;
 
             const res = await axios.get(url, {
                 headers: { Authorization: `Bearer ${token}` }
@@ -60,7 +60,7 @@ const Dashboard = () => {
 
         try {
             const token = localStorage.getItem("token");
-            const res = await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/itinerary/${tripId}`, {
+            const res = await axios.delete(`${import.meta.env.VITE_BASE_URL}api/itinerary/${tripId}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 

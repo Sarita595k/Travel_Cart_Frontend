@@ -24,7 +24,7 @@ const LoginForm = () => {
 
         try {
             // Updated endpoint for login
-            const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/user/login`, formData);
+            const res = await axios.post(`${import.meta.env.VITE_BASE_URL}api/user/login`, formData);
 
             if (res.data.success) {
                 localStorage.setItem("token", res.data.token);
